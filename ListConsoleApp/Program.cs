@@ -14,5 +14,11 @@
         array.Remove(3);
         Console.WriteLine(array.ToString() + " " + array.Count);
 
+        array.Insert(3, 66);
+        Console.WriteLine(array.ToString() + " " + array.Count);
+
+        //array.Insert(15, 100);
+        //Console.WriteLine(array.ToString() + " " + array.Count);
+
     }
 }

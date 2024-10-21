@@ -62,6 +62,29 @@ class IntList
         }
     }
 
+    public void Insert(int index, int item)
+    {
+        if (index >= _count)
+        {
+            throw new Exception("В массиве нет необходимого индекса.");
+        }
+
+        _count++;
+        int[] list = _array;
+        _array = new int[_count];
+
+        for (int i = 0; i < index; i++)
+        {
+            _array[i] = list[i];
+        }
+
+        _array[index] = item;
+
+        for (int i = index + 1; i < _count; i++)
+        {
+            _array[i] = list[i - 1];
+        }
+    }
 
     public string ToString() 
     { 
