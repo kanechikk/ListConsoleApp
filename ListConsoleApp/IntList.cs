@@ -30,34 +30,21 @@ class IntList
 
     public void Remove(int item)
     {
-        _count--;
-        int[] list = _array;
-        _array = new int[_count];
-        int c = 0;
-
-        for (int i = 0; i < list.Length ; i++)
+        for (int i = 0; i < _count; i++)
         {
-            if (list[i] == item && c == 0)
+            if (_array[i] == item)
             {
-                c++;
-            }
-            else if (c == 0)
-            {
-                _array[i] = list[i];
-            }
-            else 
-            {
-                _array[i - 1] = list[i];
+                RemoveAt(i);
+                break;
             }
         }
-
     }
 
     public void RemoveAt(int index)
     {
         if (index >= _count)
         {
-            throw new Exception("В массиве нет данного индекса.");
+            throw new Exception("В массиве нет необходимого индекса.");
         }
         
         _count--;

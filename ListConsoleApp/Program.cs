@@ -2,16 +2,16 @@
 {
     private static void Main(string[] args)
     {
-        IntList array = new IntList(1, 2, 3, 4);
+        IntList array = new IntList(1, 2, 3, 4, 5, 6, 7);
         Console.WriteLine(array.ToString());
 
-        array.Add(5);
+        array.Add(8);
         Console.WriteLine(array.ToString());
 
         array.RemoveAt(1);
         Console.WriteLine(array.ToString() + " " + array.Count);
 
-        array.RemoveAt(3);
+        array.Remove(3);
         Console.WriteLine(array.ToString() + " " + array.Count);
 
     }
