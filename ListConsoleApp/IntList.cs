@@ -50,7 +50,31 @@ class IntList
                 _array[i - 1] = list[i];
             }
         }
+
     }
+
+    public void RemoveAt(int index)
+    {
+        if (index >= _count)
+        {
+            throw new Exception("В массиве нет данного индекса.");
+        }
+        
+        _count--;
+        int[] list = _array;
+        _array = new int[_count];
+
+        for (int i = 0; i < index; i++)
+        {
+            _array[i] = list[i];
+        }
+
+        for (int i = index; i < _count; i++)
+        {
+            _array[i] = list[i + 1];
+        }
+    }
+
 
     public string ToString() 
     { 
