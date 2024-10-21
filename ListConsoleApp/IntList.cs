@@ -16,6 +16,15 @@ class IntList
 
     public void Add(int item) 
     {
+        _count++;
+        int[] list = _array;
+        _array = new int[_count];
 
+        for (int i = 0; i < list.Length; i++)
+        {
+            _array[i] = list[i];
+        }
+
+        _array[_count - 1] = item;
     }
 }
