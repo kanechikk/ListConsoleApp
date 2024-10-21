@@ -20,5 +20,8 @@
         //array.Insert(15, 100);
         //Console.WriteLine(array.ToString() + " " + array.Count);
 
+        array.Clear();
+        Console.WriteLine(array.ToString() + " " + array.Count);
+
     }
 }

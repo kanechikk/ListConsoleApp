@@ -86,6 +86,12 @@ class IntList
         }
     }
 
+    public void Clear()
+    {
+        _array = new int[0];
+        _count = 0;
+    }
+
     public string ToString() 
     { 
         return string.Join(", ", _array); 
