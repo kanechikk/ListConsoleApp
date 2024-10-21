@@ -27,4 +27,9 @@ class IntList
 
         _array[_count - 1] = item;
     }
+
+    public string ToString() 
+    { 
+        return string.Join(", ", _array); 
+    }
 }
