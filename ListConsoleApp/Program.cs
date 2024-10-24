@@ -1,4 +1,6 @@
-﻿internal class Program
+﻿using System.Security.Cryptography.X509Certificates;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
@@ -20,8 +22,15 @@
         //array.Insert(15, 100);
         //Console.WriteLine(array.ToString() + " " + array.Count);
 
-        array.Clear();
-        Console.WriteLine(array.ToString() + " : " + array.Count);
+        //array.Clear();
+        //Console.WriteLine(array.ToString() + " : " + array.Count);
+    
+        
+        array.ForEach(x => Console.WriteLine(x));
+        //Console.WriteLine(array.ToString() + " : " + array.Count);
+
+        Console.WriteLine(array.Find(x => x % 2 == 0));
 
     }
+
 }

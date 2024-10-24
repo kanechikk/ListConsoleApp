@@ -1,3 +1,5 @@
+using System.Xml.XPath;
+
 class IntList<T>
 {
     private T[] _array;
@@ -104,5 +106,30 @@ class IntList<T>
             }
         }
         return -1;
+    }
+
+    public void ForEach(System.Action<T> action)
+    {
+        for (int i = 0; i < _count; i++)
+        {
+            action(_array[i]);
+        }
+    }
+
+    public T Find(System.Func<T, bool>  predicate)
+    {
+        for (int i = 0; i < _count; i++)
+        {
+            if (predicate(_array[i]))
+            {
+                return _array[i];
+            }
+        }
+        return default(T);
+    }
+
+    public void Sort(System.Func<T, T, int> sort)
+    {
+        
     }
 }
