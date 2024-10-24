@@ -128,8 +128,21 @@ class IntList<T>
         return default(T);
     }
 
-    public void Sort(System.Func<T, T, int> sort)
+    static void Swap(ref T el1, ref T el2)
     {
-        
+        var temp = el1;
+        el1 = el2;
+        el2 = temp;
+    }
+
+    public void Sort(System.Func<T, T, T> sort)
+    {
+        for (int i = 0; i < _count; i++)
+        {
+            for (int j = 0; j < _count - i; j++)
+            {
+                   
+            }
+        }
     }
 }
