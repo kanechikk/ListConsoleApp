@@ -39,19 +39,12 @@ class IntList<T>
 
     public void Remove(T item)
     {
-        for (int i = 0; i < _count; i++)
-        {
-            if (_array[i].Equals(item))
-            {
-                RemoveAt(i);
-                break;
-            }
-        }
+        RemoveAt(IndexOf(item));
     }
 
     public void RemoveAt(int index)
     {
-        if (index >= _count)
+        if (index >= _count || index == -1)
         {
             throw new Exception("В массиве нет необходимого индекса.");
         }
@@ -66,7 +59,7 @@ class IntList<T>
 
     public void Insert(int index, T item)
     {
-        if (index >= _count)
+        if (index >= _count || index == -1)
         {
             throw new Exception("В массиве нет необходимого индекса.");
         }
@@ -99,5 +92,17 @@ class IntList<T>
             result += _array[i] + " ";
         }
         return result; 
+    }
+
+    public int IndexOf(T item)
+    {
+        for (int i = 0; i < _count; i++)
+        {
+            if (_array[i].Equals(item))
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 }
