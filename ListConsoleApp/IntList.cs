@@ -1,6 +1,6 @@
-class IntList 
+class IntList<T>
 {
-    private int[] _array;
+    private T[] _array;
     private int _count;
 
     public int Count 
@@ -8,31 +8,40 @@ class IntList
         get { return _count; }
     }
 
-    public IntList(params int[] numbers)
+    public IntList(params T[] numbers)
     {
         _array = numbers;
         _count = numbers.Length;
     }
 
-    public void Add(int item) 
+    private void Resize()
     {
-        _count++;
-        int[] list = _array;
-        _array = new int[_count];
+        T[] temp = _array;
+        _array = new T[_count * 2];
 
-        for (int i = 0; i < list.Length; i++)
+        for (int i = 0; i < temp.Length; i++)
         {
-            _array[i] = list[i];
+            _array[i] = temp[i];
+        }
+    }
+
+    public void Add(T item) 
+    {
+        if (_count + 1 > _array.Length)
+        {
+            Resize();
         }
 
+        _count++;
+        
         _array[_count - 1] = item;
     }
 
-    public void Remove(int item)
+    public void Remove(T item)
     {
         for (int i = 0; i < _count; i++)
         {
-            if (_array[i] == item)
+            if (_array[i].Equals(item))
             {
                 RemoveAt(i);
                 break;
@@ -48,21 +57,14 @@ class IntList
         }
         
         _count--;
-        int[] list = _array;
-        _array = new int[_count];
-
-        for (int i = 0; i < index; i++)
-        {
-            _array[i] = list[i];
-        }
 
         for (int i = index; i < _count; i++)
         {
-            _array[i] = list[i + 1];
+            _array[i] = _array[i + 1];
         }
     }
 
-    public void Insert(int index, int item)
+    public void Insert(int index, T item)
     {
         if (index >= _count)
         {
@@ -70,30 +72,32 @@ class IntList
         }
 
         _count++;
-        int[] list = _array;
-        _array = new int[_count];
-
-        for (int i = 0; i < index; i++)
+        if (_count > _array.Length)
         {
-            _array[i] = list[i];
+            Resize();
+        }
+
+        for (int i = _count - 1; i > index; i--)
+        {
+            _array[i] = _array[i - 1];
         }
 
         _array[index] = item;
-
-        for (int i = index + 1; i < _count; i++)
-        {
-            _array[i] = list[i - 1];
-        }
     }
 
     public void Clear()
     {
-        _array = new int[0];
+        _array = new T[0];
         _count = 0;
     }
 
     public string ToString() 
-    { 
-        return string.Join(", ", _array); 
+    {
+        string result = "";
+        for (int i = 0; i < _count; i++)
+        {
+            result += _array[i] + " ";
+        }
+        return result; 
     }
 }
