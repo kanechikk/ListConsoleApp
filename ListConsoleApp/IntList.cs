@@ -66,11 +66,12 @@ class IntList<T>
             throw new Exception("В массиве нет необходимого индекса.");
         }
 
-        _count++;
-        if (_count > _array.Length)
+        if (_count + 1 > _array.Length)
         {
             Resize();
         }
+
+        _count++;
 
         for (int i = _count - 1; i > index; i--)
         {
