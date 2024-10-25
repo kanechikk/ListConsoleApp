@@ -13,7 +13,7 @@ internal class Program
         array.RemoveAt(1);
         Console.WriteLine(array.ToString() + " : " + array.Count);
 
-        array.Remove(3);
+        array.Remove(8);
         Console.WriteLine(array.ToString() + " : " + array.Count);
 
         array.Insert(3, 66);
@@ -26,17 +26,28 @@ internal class Program
         //Console.WriteLine(array.ToString() + " : " + array.Count);
     
         
-        array.ForEach(x => Console.WriteLine(x));
+        //array.ForEach(x => Console.WriteLine(x));
         //Console.WriteLine(array.ToString() + " : " + array.Count);
 
-        Console.WriteLine(array.Find(x => x % 2 == 0));
+        //Console.WriteLine(array.Find(x => x % 2 == 0));
 
-        array.Sort((x, y) => {
-            if (x > y)
+        array.Sort( (x, y) => 
+        {
+            if (x == y)
             {
-                return x;
+                return 0;
             }
-        });
+            else if (x > y)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            } 
+        } );
+
+        Console.WriteLine(array.ToString() + " : " + array.Count);
 
     }
 
